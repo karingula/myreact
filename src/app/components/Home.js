@@ -1,23 +1,24 @@
 import React from "react";
 import PropTypes from 'prop-types';
 export class Home extends React.Component {
-
+    constructor(props) {
+        super();
+        this.age = props.age;
+    }
+    onMakeOlder() {
+        this.age+=3;
+        console.log(this.age)
+    }
     render() {
-        console.log(this.props);
         let greetings="welcome"
         return (
             <div>
                 <p> In a new Component! </p>
                 <p>{greetings}</p>
-                <p>Brand Name: {this.props.user.name}</p>
-                <p>The car is categorized under:</p>
-                <div> 
-                    <ul> 
-                        {this.props.user.category.map((feature, i) => <li key={i}>{feature}</li>)}
-                    </ul>
-                </div>
                 <hr/>
-                {this.props.children}
+                <p>Project Name: {this.props.name}</p>
+                <p>Project Age: {this.props.age}</p>
+                <button onClick={() => this.onMakeOlder()} className="btn btn-success"> Make shiny older </button>
             </div>
         );
     }
@@ -25,7 +26,5 @@ export class Home extends React.Component {
 
 Home.propTypes = {
     name: PropTypes.string,
-    age: PropTypes.number,
-    user: PropTypes.object,
-    children: PropTypes.element.isRequired
+    age: PropTypes.number
 };
