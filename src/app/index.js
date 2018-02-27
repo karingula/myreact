@@ -14,7 +14,7 @@ class App extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col-xs-10 col-xs-offset-1">
-                        <Home name={"Shiny"} age={25}/>
+                        <Home name={"Shiny"} initialAge={25}/>
                     </div>
                 </div>
             </div>

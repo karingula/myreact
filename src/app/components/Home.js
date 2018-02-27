@@ -1,13 +1,22 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 export class Home extends React.Component {
     constructor(props) {
         super();
-        this.age = props.age;
+        this.state = {
+            age: props.initialAge,
+            status: 0
+        };
+        setTimeout(() =>{
+            this.setState({
+                status:1
+            });
+        },3000);
     }
     onMakeOlder() {
-        this.age+=3;
-        console.log(this.age)
+        this.setState({
+            age: this.state.age + 3
+        });
     }
     render() {
         let greetings="welcome"
@@ -17,7 +26,8 @@ export class Home extends React.Component {
                 <p>{greetings}</p>
                 <hr/>
                 <p>Project Name: {this.props.name}</p>
-                <p>Project Age: {this.props.age}</p>
+                <p>Project Age: {this.state.age}</p>
+                <p>Status: {this.state.status} </p>
                 <button onClick={() => this.onMakeOlder()} className="btn btn-success"> Make shiny older </button>
             </div>
         );
@@ -26,5 +36,5 @@ export class Home extends React.Component {
 
 Home.propTypes = {
     name: PropTypes.string,
-    age: PropTypes.number
+    initialAge: PropTypes.number
 };
